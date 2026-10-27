@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #14213d;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            color: #00d4ff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 5px 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        /* Profile Section */
+        header {
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #14213d, #0077b6);
+            color: white;
+        }
+
+        .profile {
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .profile h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .profile p {
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00d4ff;
+            color: #14213d;
+            padding: 10px 22px;
+            margin-top: 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* Content Sections */
+        section {
+            padding: 55px 8%;
+            scroll-margin-top: 75px;
+        }
+
+        section h2 {
+            text-align: center;
+            color: #0077b6;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit, minmax(230px, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #00000012;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 0.8s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px #0077b633;
+        }
+
+        .card h3 {
+            color: #14213d;
+            margin-bottom: 10px;
+        }
+
+        /* Technical Skills */
+        .skill {
+            margin-bottom: 18px;
+        }
+
+        .skill p {
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 12px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(
+                90deg, #0077b6, #00d4ff
+            );
+            animation: grow 2s ease;
+        }
+
+        /* Contact Form */
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
+
+        footer {
+            background: #14213d;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* CSS Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes grow {
+            from { width: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 650px) {
+            nav {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 7px;
+            }
+
+            .profile h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 40px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <h2>My Portfolio</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Profile Section -->
+    <header id="home">
+        <div class="profile">
+            <!-- Replace profile.jpg with your photo -->
+            <img src="profile.jpg" alt="My Profile Photo">
+            <h1>Hello, I'm Your Name</h1>
+            <p>Student | Web Developer | Programmer</p>
+            <a href="#about" class="btn">Explore My Portfolio</a>
+        </div>
+    </header>
+
+    <!-- About Me -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="card">
+            <p>
+                Hello! I am a student who is interested in technology,
+                programming, and web development. I enjoy learning new
+                skills, solving problems, and creating useful projects.
+                My goal is to become a successful software professional.
+            </p>
+        </div>
+    </section>
+
+    <!-- Educational Qualifications -->
+    <section id="education">
+        <h2>Educational Qualifications</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Degree / B.Tech</h3>
+                <p>College: Your College Name</p>
+                <p>Year: 2026 - Present</p>
+                <p>Percentage / CGPA: Your Score</p>
+            </div>
+
+            <div class="card">
+                <h3>Intermediate</h3>
+                <p>College: Your Junior College</p>
+                <p>Year: 2024 - 2026</p>
+                <p>Percentage: Your Score</p>
+            </div>
+
+            <div class="card">
+                <h3>School Education</h3>
+                <p>School: Your School Name</p>
+                <p>Year: 2024</p>
+                <p>Percentage: Your Score</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="card">
+            <div class="skill">
+                <p>HTML</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <p>CSS</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 80%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <p>Python</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 70%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <p>Java</p>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 60%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies">
+        <h2>My Hobbies</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Reading</h3>
+                <p>I enjoy reading books and learning new things.</p>
+            </div>
+            <div class="card">
+                <h3>Programming</h3>
+                <p>I like writing code and solving problems.</p>
+            </div>
+            <div class="card">
+                <h3>Music</h3>
+                <p>I enjoy listening to music in my free time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Personal Portfolio</h3>
+                <p>A responsive website created using HTML and CSS.</p>
+            </div>
+
+            <div class="card">
+                <h3>Calculator</h3>
+                <p>A basic calculator project for mathematical operations.</p>
+            </div>
+
+            <div class="card">
+                <h3>Student Management System</h3>
+                <p>A project to manage student information and records.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+        <h2>Achievements</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Certificates</h3>
+                <p>Add your course completion certificates here.</p>
+            </div>
+
+            <div class="card">
+                <h3>Academic Achievements</h3>
+                <p>Add your academic awards and accomplishments.</p>
+            </div>
+
+            <div class="card">
+                <h3>Technical Events</h3>
+                <p>Add hackathons, coding contests, or workshops.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume">
+        <h2>My Resume</h2>
+        <div class="card" style="text-align: center;">
+            <p>View or download my resume below.</p>
+
+            <!-- Keep resume.pdf in the same folder -->
+            <a href="resume.pdf" class="btn" download>
+                Download Resume
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <div class="card">
+            <p><strong>Email:</strong> yourname@example.com</p>
+            <p><strong>Phone:</strong> +91 XXXXXXXXXX</p>
+            <p><strong>Location:</strong> Your City, India</p>
+
+            <form action="mailto:yourname@example.com"
+                  method="post"
+                  enctype="text/plain">
+
+                <input type="text" name="name"
+                       placeholder="Your Name" required>
+
+                <input type="email" name="email"
+                       placeholder="Your Email" required>
+
+                <textarea name="message" rows="5"
+                          placeholder="Your Message"
+                          required></textarea>
+
+                <button type="submit" class="btn">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Your Name. All Rights Reserved.</p>
+        <p>Designed using HTML and CSS.</p>
+    </footer>
+
+</body>
+</html>
